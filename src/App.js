@@ -2,7 +2,6 @@ import React, { useState } from "react";
 // import Solarized from "./Prism/Solarized/Solarized";
 // import Input from "./Prism/Input";
 import Okadia from "./Prism/Okadia/Okadia.jsx";
-import Highlight from "./Highlight/index";
 const ABC = `import React, { useState } from "react";
 // import Solarized from "./Prism/Solarized/Solarized";
 // import Input from "./Prism/Input";
@@ -67,7 +66,6 @@ function App() {
       ></input>
       {/* </div> */}
       <Okadia data={ABC} />
-      {/* <Highlight data={ABC} /> */}
     </div>
   );
 }
