@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Prism from "prismjs";
 import "../CodeTheme/Okadia.css";
+// import "../CodeTheme/Solarized.css";
 
 function App() {
   const [dataType, setDataType] = useState("js");
@@ -10,6 +11,13 @@ function App() {
   const handleChange = e => {
     console.log(e);
     setPreviewContent(`${e.target.value}`);
+  };
+  const newhandleChange = () => {
+    let element = document.getElementById("editableDiv");
+    let x = document.getElementById("editableDiv").isContentEditable;
+    console.log(element.innerHTML);
+    console.log(x);
+    // setPreviewContent(element.innerHTML);
   };
   const handleChangeTypeJS = () => {
     setDataType(`js`);
@@ -82,17 +90,24 @@ const loader = getLoader(components, componentsToLoad, loadedComponents);
         </div>
       </div>
       {/* -----------------代码view区------------------ */}
+      <button onClick={newhandleChange}>click</button>
       <div>
         <ul>代码区:{dataType}</ul>
         <div style={{ width: 500, height: "100%" }}>
           <pre
-            contentEditable="true"
-            onChange={handleChange}
-            value={previewContent}
+            // input={onDivInput}
+            onChange={newhandleChange}
+            // value={previewContent}
             className="line-numbers"
             style={{ width: 500, height: "100%" }}
           >
-            <code className={`language-${dataType}`}>{previewContent}</code>
+            <code
+              contentEditable="true"
+              id="editableDiv"
+              className={`language-${dataType}`}
+            >
+              {previewContent}
+            </code>
           </pre>
         </div>
         <div>

@@ -1,30 +1,30 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add @material-ui/styles
+  /usr/local/bin/node /usr/local/bin/yarn
 
 PATH: 
-  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin
 
 Yarn version: 
-  1.21.0
+  1.19.1
 
 Node version: 
-  12.13.1
+  10.16.3
 
 Platform: 
   darwin x64
 
 Trace: 
-  Error: https://registry.npmjs.org/@material-design-icons-iconfont: Request "https://registry.npmjs.org/@material-design-icons-iconfont" returned a 405
-      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66947:18)
-      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140622:22)
-      at Request.emit (events.js:210:5)
-      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141594:10)
-      at Request.emit (events.js:210:5)
-      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141516:12)
-      at Object.onceWrapper (events.js:299:28)
-      at IncomingMessage.emit (events.js:215:7)
-      at endReadableNT (_stream_readable.js:1184:12)
-      at processTicksAndRejections (internal/process/task_queues.js:80:21)
+  Error: https://registry.yarnpkg.com/@material-design-icons-iconfont: Request "https://registry.yarnpkg.com/@material-design-icons-iconfont" returned a 405
+      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66935:18)
+      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140564:22)
+      at Request.emit (events.js:198:13)
+      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141536:10)
+      at Request.emit (events.js:198:13)
+      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141458:12)
+      at Object.onceWrapper (events.js:286:20)
+      at IncomingMessage.emit (events.js:203:15)
+      at endReadableNT (_stream_readable.js:1145:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
 
 npm manifest: 
   {
@@ -37,7 +37,12 @@ npm manifest:
       "@testing-library/jest-dom": "^4.2.4",
       "@testing-library/react": "^9.3.2",
       "@testing-library/user-event": "^7.1.2",
+      "babel-preset-gatsby": "^0.2.26",
+      "classnames": "^2.2.6",
+      "highlight.js": "^9.17.1",
+      "marked": "^0.8.0",
       "material-design-icons-iconfont": "^5.0.1",
+      "prismjs": "^1.18.0",
       "react": "^16.12.0",
       "react-dom": "^16.12.0",
       "react-router-dom": "^5.1.2",
@@ -68,6 +73,7 @@ npm manifest:
     },
     "devDependencies": {
       "babel-plugin-import": "^1.13.0",
+      "babel-plugin-prismjs": "^2.0.0",
       "babel-plugin-transform-imports": "^2.0.0"
     }
   }
