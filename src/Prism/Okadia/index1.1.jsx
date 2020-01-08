@@ -1,32 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Prism from "prismjs";
-// import marked from "marked";
-// import highlight from "highlight.js";
 import "../CodeTheme/Okadia.css";
 
-// highlight.configure({
-//   tabReplace: "  ",
-//   classPrefix: "hljs-",
-//   languages: [
-//     "CSS",
-//     "HTML, XML",
-//     "JavaScript",
-//     "PHP",
-//     "Python",
-//     "Stylus",
-//     "TypeScript",
-//     "Markdown"
-//   ]
-// });
-// marked.setOptions({
-//   highlight(code) {
-//     return highlight.highlightAuto(code).value;
-//   }
-// });
-
 function App() {
-  const [dataType, setDataType] = useState("");
+  const [dataType, setDataType] = useState("js");
   const [previewContent, setPreviewContent] = useState("");
+  // const [newContent, setnewContent] = useState("");
 
   const handleChange = e => {
     console.log(`${e.target.value}`);
@@ -44,6 +23,9 @@ function App() {
   useEffect(() => {
     setTimeout(() => Prism.highlightAll(), 0);
   });
+  const handleSelectChange = e => {
+    setDataType(`${e.target.value}`);
+  };
 
   const js = `
 const getLoader = require('prismjs/dependencies');
@@ -62,6 +44,12 @@ const loader = getLoader(components, componentsToLoad, loadedComponents);
             <button onClick={handleChangeTypeJS}>JavaScript</button>
             <button onClick={handleChangeTypeCSS}>CSS</button>
             <button onClick={handleChangeTypeC}>C++</button>
+            &nbsp; &ensp; &emsp; &ensp; &emsp; &nbsp; &ensp; &emsp;
+            <select name="type" onChange={handleSelectChange}>
+              <option value="js">JavaScript</option>
+              <option value="css">CSS</option>
+              <option value="c++">C++</option>
+            </select>
           </ul>
         </div>
         <textarea
@@ -87,9 +75,12 @@ const loader = getLoader(components, componentsToLoad, loadedComponents);
       {/* -----------------代码view区------------------ */}
       <div>
         <ul>代码区:{dataType}</ul>
+        {/* <div style={{ width: 500, height: "100%" }}> */}
         <pre className="line-numbers" style={{ width: 500, height: "100%" }}>
           <code className={`language-${dataType}`}>{previewContent}</code>
         </pre>
+        {/* </div> */}
+
         <pre className="line-numbers">
           <code className="language-js">{js.trim()}</code>
         </pre>
