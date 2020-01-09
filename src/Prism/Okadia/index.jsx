@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Prism from "prismjs";
 import "../CodeTheme/Okadia.css";
-import { Editor, EditorState } from "draft-js";
 
 function App() {
   const [dataType, setDataType] = useState("js");
   const [previewContent, setPreviewContent] = useState(
-    EditorState.createEmpty()
+    " EditorState.createEmpty()"
   );
   // const [newContent, setnewContent] = useState("");
 
@@ -43,9 +42,17 @@ function App() {
   };
 
   return (
-    <div style={{ display: "flex" }}>
+    <div
+      style={{
+        position: "relative",
+        textAlign: "left",
+        boxSizing: "border-box",
+        padding: 0,
+        overflow: "hidden"
+      }}
+    >
       {/* -----------------代码input区------------------ */}
-      {/* <div>
+      <div>
         <div>
           <ul>
             <button onClick={handleChangeTypeJS}>JavaScript</button>
@@ -65,79 +72,88 @@ function App() {
           type="text"
           onChange={handleChange}
           style={{
-            width: 500,
-            height: 400,
-            backgroundColor: "#f8f8f2"
+            margin: 0,
+            border: 0,
+            background: "none",
+            boxSizing: "inherit",
+            display: "inherit",
+            fontFamily: "inherit",
+            fontSize: "inherit",
+            fontStyle: "inherit",
+            fontVariantLigatures: "inherit",
+            fontWeight: "inherit",
+            letterSpacing: "inherit",
+            lineHeight: "inherit",
+            tabSize: "inherit",
+            textIndent: "inherit",
+            textRendering: "inherit",
+            textTransform: "inherit",
+            whiteSpace: "pre-wrap",
+            wordBreak: "keep-all",
+            overflowWrap: "break-word",
+            position: "absolute",
+            top: 0,
+            left: 0,
+            height: "100%",
+            width: "100%",
+            resize: "none",
+            color: "inherit",
+            overflow: "hidden",
+            MozOsxFontSmoothing: "grayscale",
+            WebkitFontSmoothing: "antialiased",
+            WebkitTextFillColor: "transparent",
+            paddingTop: 100,
+            paddingRight: 100,
+            paddingBottom: 100,
+            paddingLeft: 100
           }}
         />
-        <div
-          style={{
-            width: "500px"
-          }}
-        >
-          <div>正常结果区:</div>
-          {previewContent}
-        </div>
-      </div> */}
+      </div>
       {/* -----------------代码view区------------------ */}
 
       <div>
-        <ul>
-          {" "}
-          <button onClick={newhandleChange}>click</button>代码区:{dataType}
-        </ul>
-        {/* <div
-          contentEditable="plaintext-only"
-          id="editableDiv"
-          onInput={newhandleChange}
-          // onChange={newhandleChange}
-          value={previewContent}
-          style={{
-            width: 500,
-            height: 400,
-            backgroundColor: "slategray"
-          }}
-        ></div> */}
-        <div
-          style={{
-            width: 500,
-            height: 400,
-            backgroundColor: "slategray"
-          }}
-        >
-          <Editor
-            editorState={previewContent}
-            handleKeyCommand={this.handleKeyCommand}
-            onChange={setPreviewContent}
-          >
-            {previewContent}
-          </Editor>
-          {/* <code className="language-js">{previewContent}</code> */}
-        </div>
-        {/* <div style={{ width: 500, height: 400, backgroundColor: "slategray" }}>
+        <ul>代码区:{dataType}</ul>
+
+        <div style={{ width: 500, height: 400, backgroundColor: "slategray" }}>
           <pre
-            // contentEditable="true"
-            contentEditable="plaintext-only"
+            aria-hidden="true"
             id="editableDiv"
-            onInput={newhandleChange}
-            // onChange={newhandleChange}
             value={previewContent}
-            style={{ width: 500, height: 400 }}
+            style={{
+              margin: 0,
+              border: 0,
+              background: "none",
+              boxSizing: "inherit",
+              display: "inherit",
+              fontFamily: "inherit",
+              fontSize: "inherit",
+              fontStyle: "inherit",
+              fontVariantLigatures: "inherit",
+              fontWeight: "inherit",
+              letterSpacing: "inherit",
+              lineHeight: "inherit",
+              tabSize: "inherit",
+              textIndent: "inherit",
+              textRendering: "inherit",
+              textTransform: "inherit",
+              whiteSpace: "pre-wrap",
+              wordBreak: "keep-all",
+              overflowWrap: "break-word",
+              position: "relative",
+              pointerEvents: "none",
+              paddingTop: 100,
+              paddingRight: 100,
+              paddingBottom: 100,
+              paddingLeft: 100
+            }}
           >
-            <div
+            {/* <div
               className={`language-${dataType}`}
               dangerouslySetInnerHTML={{ __html: previewContent }}
-            />
-            <code
-              contentEditable="plaintext-only"
-              onInput={newhandleChange}
-              className={`language-${dataType}`}
-            >
-              {previewContent}
-            </code>
-            {/* {previewContent} */}
-        {/* </pre> */}
-        {/* </div>  */}
+            /> */}
+            <code className={`language-${dataType}`}>{previewContent}</code>
+          </pre>
+        </div>
       </div>
     </div>
   );

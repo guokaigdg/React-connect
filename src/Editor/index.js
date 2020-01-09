@@ -547,9 +547,9 @@ export default class Editor extends React.Component<Props, State> {
             ...styles.textarea,
             ...contentStyle
           }}
-          className={className}
+          className={className} // <- className
           id={textareaId}
-          value={value}
+          value={value} //<-
           onChange={this._handleChange}
           onKeyDown={this._handleKeyDown}
           onClick={onClick}
@@ -561,7 +561,7 @@ export default class Editor extends React.Component<Props, State> {
           maxLength={maxLength}
           minLength={minLength}
           name={name}
-          placeholder={placeholder}
+          placeholder={placeholder} //<- 默认显示
           readOnly={readOnly}
           required={required}
           autoFocus={autoFocus}
