@@ -10,6 +10,8 @@
     "@testing-library/user-event": "^7.1.2",
     "babel-preset-gatsby": "^0.2.26",
     "classnames": "^2.2.6",
+    "dedent": "^0.7.0",
+    "draft-js-plugins-editor": "^3.0.0",
     "highlight.js": "^9.17.1",
     "marked": "^0.8.0",
     "material-design-icons-iconfont": "^5.0.1",

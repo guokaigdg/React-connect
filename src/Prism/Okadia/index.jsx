@@ -1,23 +1,30 @@
 import React, { useState, useEffect } from "react";
 import Prism from "prismjs";
 import "../CodeTheme/Okadia.css";
-// import "../CodeTheme/Solarized.css";
+import { Editor, EditorState } from "draft-js";
 
 function App() {
   const [dataType, setDataType] = useState("js");
-  const [previewContent, setPreviewContent] = useState("");
+  const [previewContent, setPreviewContent] = useState(
+    EditorState.createEmpty()
+  );
   // const [newContent, setnewContent] = useState("");
 
   const handleChange = e => {
     console.log(e);
     setPreviewContent(`${e.target.value}`);
   };
-  const newhandleChange = () => {
-    let element = document.getElementById("editableDiv");
-    let x = document.getElementById("editableDiv").isContentEditable;
-    console.log(element.innerHTML);
-    console.log(x);
-    // setPreviewContent(element.innerHTML);
+  const onChange = previewContent => {
+    console.log(previewContent);
+    setPreviewContent(previewContent);
+  };
+  const newhandleChange = e => {
+    // let element = document.getElementById("editableDiv");
+    // let x = document.getElementById("editableDiv").isContentEditable;
+    // console.log(element.innerHTML);
+    console.log(e.target.innerText);
+    // console.log(x);
+    setPreviewContent(e.target.innerText);
   };
   const handleChangeTypeJS = () => {
     setDataType(`js`);
@@ -35,27 +42,10 @@ function App() {
     setDataType(`${e.target.value}`);
   };
 
-  const js = `
-const getLoader = require('prismjs/dependencies');
-const components = require('prismjs/components');
-const componentsToLoad = ['markup', 'css', 'php'];
-const loadedComponents = ['clike', 'javascript'];
-const loader = getLoader(components, componentsToLoad, loadedComponents);
-  `;
-  // function View() {
-  //   return (
-  //     <div style={{ width: 500, height: 600 }}>
-  //       <pre className="line-numbers" style={{ width: 500, height: 600 }}>
-  //         <code className={`language-${dataType}`}>{previewContent}</code>
-  //       </pre>
-  //     </div>
-  //   );
-  // }
-
   return (
     <div style={{ display: "flex" }}>
       {/* -----------------代码input区------------------ */}
-      <div>
+      {/* <div>
         <div>
           <ul>
             <button onClick={handleChangeTypeJS}>JavaScript</button>
@@ -75,8 +65,8 @@ const loader = getLoader(components, componentsToLoad, loadedComponents);
           type="text"
           onChange={handleChange}
           style={{
-            width: "500px",
-            height: "100%",
+            width: 500,
+            height: 400,
             backgroundColor: "#f8f8f2"
           }}
         />
@@ -88,36 +78,66 @@ const loader = getLoader(components, componentsToLoad, loadedComponents);
           <div>正常结果区:</div>
           {previewContent}
         </div>
-      </div>
+      </div> */}
       {/* -----------------代码view区------------------ */}
-      <button onClick={newhandleChange}>click</button>
+
       <div>
-        <ul>代码区:{dataType}</ul>
-        <div style={{ width: 500, height: "100%" }}>
-          <pre
-            // input={onDivInput}
-            onChange={newhandleChange}
-            // value={previewContent}
-            className="line-numbers"
-            style={{ width: 500, height: "100%" }}
+        <ul>
+          {" "}
+          <button onClick={newhandleChange}>click</button>代码区:{dataType}
+        </ul>
+        {/* <div
+          contentEditable="plaintext-only"
+          id="editableDiv"
+          onInput={newhandleChange}
+          // onChange={newhandleChange}
+          value={previewContent}
+          style={{
+            width: 500,
+            height: 400,
+            backgroundColor: "slategray"
+          }}
+        ></div> */}
+        <div
+          style={{
+            width: 500,
+            height: 400,
+            backgroundColor: "slategray"
+          }}
+        >
+          <Editor
+            editorState={previewContent}
+            handleKeyCommand={this.handleKeyCommand}
+            onChange={setPreviewContent}
           >
+            {previewContent}
+          </Editor>
+          {/* <code className="language-js">{previewContent}</code> */}
+        </div>
+        {/* <div style={{ width: 500, height: 400, backgroundColor: "slategray" }}>
+          <pre
+            // contentEditable="true"
+            contentEditable="plaintext-only"
+            id="editableDiv"
+            onInput={newhandleChange}
+            // onChange={newhandleChange}
+            value={previewContent}
+            style={{ width: 500, height: 400 }}
+          >
+            <div
+              className={`language-${dataType}`}
+              dangerouslySetInnerHTML={{ __html: previewContent }}
+            />
             <code
-              contentEditable="true"
-              id="editableDiv"
+              contentEditable="plaintext-only"
+              onInput={newhandleChange}
               className={`language-${dataType}`}
             >
               {previewContent}
             </code>
-          </pre>
-        </div>
-        <div>
-          <pre className="line-numbers">
-            <code className="language-js">{js.trim()}</code>
-          </pre>
-          <pre>
-            <code className="language-css">{`p { color: red }`}</code>
-          </pre>
-        </div>
+            {/* {previewContent} */}
+        {/* </pre> */}
+        {/* </div>  */}
       </div>
     </div>
   );

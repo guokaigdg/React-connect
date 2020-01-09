@@ -104,8 +104,7 @@ pre[class*="language-"] {
 
 .token.atrule,
 .token.attr-value,
-/* function 函数颜色ma_meng */
-/* 例如function app() / app = () =>{} */
+/* function 函数颜色ma_meng 例如function app() / app = () =>{} */
 .token.function,
 /* 类名颜色ma_meng */
 .token.class-name {
