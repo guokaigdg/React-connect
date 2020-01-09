@@ -561,7 +561,7 @@ export default class Editor extends React.Component<Props, State> {
           maxLength={maxLength}
           minLength={minLength}
           name={name}
-          placeholder={placeholder} //<- 默认显示
+          placeholder={placeholder} //<- 默认显示内容
           readOnly={readOnly}
           required={required}
           autoFocus={autoFocus}
@@ -573,7 +573,11 @@ export default class Editor extends React.Component<Props, State> {
         />
         <pre
           // aria-hidden="true"
-          style={{ ...styles.editor, ...styles.highlight, ...contentStyle }}
+          style={{
+            ...styles.editor,
+            ...styles.highlight,
+            ...contentStyle
+          }}
           {...(typeof highlighted === "string"
             ? { dangerouslySetInnerHTML: { __html: highlighted + "<br />" } }
             : { children: highlighted })}
