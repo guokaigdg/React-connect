@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Prism from "prismjs";
-// import { highlight, languages } from "prismjs/components/prism-core";
-// import "../CodeTheme/Okadia.css";
 import "./styles.css";
 
 function CodeEditor() {
@@ -130,24 +128,3 @@ function CodeEditor() {
 }
 
 export default CodeEditor;
-
-// import React, { useEffect } from "react";
-// import Prism from "prismjs";
-// import "./styles.css";
-
-// function App() {
-//   useEffect(() => {
-//     Prism.highlightAll();
-//   });
-//   const code = `
-//   const foo = 'foo';
-//   const bar = 'bar';
-//   console.log(foo + bar);
-//   `;
-//   return (
-//     <pre className="line-numbers">
-//       <code className="language-js">{code}</code>
-//     </pre>
-//   );
-// }
-// export default App;
