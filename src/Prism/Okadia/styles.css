@@ -38,8 +38,8 @@ body {
   max-width: 100%;
   padding: 10px;
   text-align: center;
-  /* background-color: rgb(17, 49, 83); */
-  background-color: #fafafa;
+  background-color: #eee8aa;
+  /* background-color: #fafafa; */
 }
 
 .container_editor_area {
@@ -89,7 +89,9 @@ body {
 .token.property,
 .token.tag,
 .token.boolean,
-.token.number,
+.token.number {
+  color: rgb(255, 154, 74);
+}
 .token.constant,
 .token.symbol,
 .token.deleted {

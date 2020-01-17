@@ -13,12 +13,12 @@ function App() {
     setPreviewContent(`${e.target.value}`);
   };
   const newhandleChange = e => {
-    let element = document.getElementById("editableDiv");
+    // let element = document.getElementById("editableDiv");
     // let x = document.getElementById("editableDiv").isContentEditable;
-    console.log(element.innerHTML);
+    // console.log(element.innerHTML);
     console.log(e.target.innerText);
     // console.log(x);
-    setPreviewContent(element.innerHTML);
+    setPreviewContent(e.target.innerText);
   };
   const handleChangeTypeJS = () => {
     setDataType(`js`);
@@ -30,7 +30,8 @@ function App() {
     setDataType("c");
   };
   useEffect(() => {
-    setTimeout(() => Prism.highlightAll(), 0);
+    // setTimeout(() => Prism.highlightAll(), 0);
+    Prism.highlightAll();
   });
   const handleSelectChange = e => {
     setDataType(`${e.target.value}`);
@@ -94,14 +95,15 @@ function App() {
             // contentEditable="true"
             contentEditable="plaintext-only"
             id="editableDiv"
-            // onInput={newhandleChange}
+            onInput={newhandleChange}
             // onChange={newhandleChange}
-            value={previewContent}
+            // value={previewContent}
             style={{ width: 500, height: 400 }}
-            // dangerouslySetInnerHTML={{ __html: previewContent }}
+            className={`language-${dataType}`}
+            dangerouslySetInnerHTML={{ __html: previewContent }}
           >
             {/* <div dangerouslySetInnerHTML={{ __html: previewContent }}></div> */}
-            <code className={`language-${dataType}`}>{previewContent}</code>
+            {/* <code>{previewContent}</code> */}
             {/* {previewContent} */}
           </pre>
         </div>
